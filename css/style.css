@@ -1,0 +1,189 @@
+* {
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+}
+
+body, h1, ul, li {
+  margin: 0;
+}
+
+body nav {
+  display: flex;
+  width: 100%;
+  height: 50px;
+}
+body nav .nav-left {
+  width: 50%;
+  font-size: 1.25rem;
+  line-height: 50px;
+  margin-left: 15px;
+}
+body nav .nav-right {
+  width: 50%;
+}
+body nav .nav-right label {
+  display: none;
+}
+@media (max-width: 600px) {
+  body nav .nav-right label {
+    display: block;
+    font-size: 2rem;
+    text-align: end;
+    line-height: 50px;
+    margin: 0 15px;
+    cursor: pointer;
+  }
+}
+body nav .nav-right input {
+  display: none;
+}
+body nav .nav-right ul {
+  display: flex;
+  justify-content: flex-end;
+}
+@media (max-width: 600px) {
+  body nav .nav-right ul {
+    display: none;
+  }
+}
+body nav .nav-right ul li {
+  font-size: 1.25rem;
+  list-style: none;
+  line-height: 50px;
+  margin: 0 15px;
+}
+body main {
+  width: 100%;
+}
+body main section.page-one {
+  width: 100%;
+  height: 300px;
+  background-color: lightblue;
+}
+body main section.page-one h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  line-height: 300px;
+  font-weight: bold;
+}
+@media (max-width: 440px) {
+  body main section.page-one h2 {
+    font-size: 1.75rem;
+  }
+}
+body main section.page-two {
+  width: 100%;
+  margin-top: 15px;
+}
+body main #img-container {
+  width: 1200px;
+  margin: 0 auto;
+}
+@media (max-width: 1200px) {
+  body main #img-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (max-width: 600px) {
+  body main #img-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+body main #img-container .box-top {
+  display: flex;
+  width: 100%;
+}
+@media (max-width: 600px) {
+  body main #img-container .box-top {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+body main #img-container .box-top .top-item {
+  width: 100%;
+  margin: 10px;
+  background-color: lightblue;
+}
+body main #img-container .box-top .top-item div {
+  display: flex;
+}
+body main #img-container .box-top .top-item div img {
+  width: 80px;
+  height: 50px;
+}
+body main #img-container .box-top .top-item div p {
+  font-size: 1.25rem;
+  line-height: 50px;
+  padding-left: 10px;
+}
+body main #img-container .box-btm {
+  width: 100%;
+  position: relative;
+}
+body main #img-container .box-btm .btm-up, body main #img-container .box-btm .btm-down {
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+@media (max-width: 1200px) {
+  body main #img-container .box-btm .btm-up, body main #img-container .box-btm .btm-down {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+@media (max-width: 600px) {
+  body main #img-container .box-btm .btm-up, body main #img-container .box-btm .btm-down {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+body main #img-container .box-btm .btm-up .btm-item, body main #img-container .box-btm .btm-down .btm-item {
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+@media (max-width: 600px) {
+  body main #img-container .box-btm .btm-up .btm-item, body main #img-container .box-btm .btm-down .btm-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+body main #img-container .box-btm .btm-up .btm-item .item, body main #img-container .box-btm .btm-down .btm-item .item {
+  width: 100%;
+  margin: 10px;
+  position: relative;
+}
+body main #img-container .box-btm .btm-up .btm-item .item img, body main #img-container .box-btm .btm-down .btm-item .item img {
+  width: 100%;
+  display: block;
+}
+body main #img-container .box-btm .btm-up .btm-item .item p, body main #img-container .box-btm .btm-down .btm-item .item p {
+  width: 100%;
+  height: 50px;
+  background-color: lightblue;
+  font-size: 1.25rem;
+  text-align: center;
+  line-height: 50px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.5;
+  background: white;
+}
+body main #img-container .box-btm .btm-up .btm-item .item .icon, body main #img-container .box-btm .btm-down .btm-item .item .icon {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  text-align: end;
+  font-size: 2rem;
+  color: yellow;
+}/*# sourceMappingURL=style.css.map */

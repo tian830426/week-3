@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wehelp week-1</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left"><p>My Website</p></div>
+      <div class="nav-right">
+        <!-- 漢堡條 -->
+      <label for="burger"><i class="fa-solid fa-bars"></i></label>
+      <input type="checkbox" id="burger">
+        <ul class="menu">
+          <li>Item1</li>
+          <li>Item2</li>
+          <li>Item3</li>
+          <li>Item4</li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <section class="page-one"><h2>Welcome to MyHome</h2></section>
+      <section class="page-two">
+        <div id="img-container">
+         <div class="box-top">
+          <div class="top-item">
+            <div class="top1"></div>
+          </div>
+          <div class="top-item">
+            <div class="top2"></div>   
+          </div>
+         </div>
+         <div class="box-btm">
+          <div class="btm-up">
+          <div class="btm-item item1">
+          <div class="itemOne"></div>
+          <div class="itemTwo"></div>
+        </div>
+          <div class="btm-item item2">
+            <div class="itemThree"></div>
+            <div class="itemFour"></div>
+            </div>
+          </div>
+          <div class="btm-down">
+            <div class="btm-item item3" >
+              <div class="itemFive"></div>
+              <div class="itemSix"></div>
+              </div>
+          <div class="btm-item item4">
+            <div class="itemSeven"></div>
+            <div class="itemEight"></div>
+            </div>
+          </div>
+          <!-- <div class="btm-down">
+            <div class ='btm-item item4'>
+              <div class="itemTen"></div> 
+            </div>
+          </div>  -->
+         </div> 
+        </div>     
+
+        <!-- <div style="display: flex;
+        justify-content: center;"><input type="button" value="load more" class="btn" style="width: 100px;height: 40px;font-size: 1.25rem; " ></div> -->
+      </section>
+       
+    </main>
+    <script>
+         const url = "https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json"
+
+//取得API 資料
+fetch(url)
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(data){
+        let resultsAll = data.result.results;
+        let resultsLen = resultsAll.length;
+        let stitleAll = [];
+        let fileAll = [];
+
+        for (let i = 0 ; i < resultsLen ; i++) {
+            // 取得JSON內的stitle array（景點名稱）
+            let stitle = resultsAll[i].stitle;
+            stitleAll.push(stitle);
+
+            // 取得JSON內的file array （第一張圖片）
+            let file = resultsAll[i].file.split('.jpg')[0].toLowerCase()+'.jpg';
+            fileAll.push(file);
+
+            // 取top1資料
+            if(i < 1) {
+                let top = document.querySelector('.top1');
+                top.setAttribute('style','display: flex')
+                let text = document.createElement('p');
+                text.setAttribute('class','')
+                text.textContent = resultsAll[i].stitle;
+                let img = document.createElement('img');
+                img.setAttribute('src', resultsAll[i].file.split('.jpg')[0].toLowerCase()+'.jpg');
+                
+                document.querySelector('.top1').appendChild(img);
+                document.querySelector('.top1').appendChild(text);
+            }
+            // // 取top2資料
+            if(i > 0 && i < 2) {
+                let top = document.querySelector('.top2');
+                top.setAttribute('style','display: flex')
+                let text = document.createElement('p');
+                text.setAttribute('class','')
+                text.textContent = resultsAll[i].stitle;
+                let img = document.createElement('img');
+                img.setAttribute('src', resultsAll[i].file.split('.jpg')[0].toLowerCase()+'.jpg');
+                
+                document.querySelector('.top2').appendChild(img);
+                document.querySelector('.top2').appendChild(text);
+                
+            }
+
+            // 取itemOne資料
+            if(i > 1 && i < 3) {
+                let item = document.querySelector('.itemOne');
+                item.setAttribute('style','width: 100%; margin:10px;position: relative;')
+                let text = document.createElement('p');
+                text.setAttribute('style','width: 100%;height:50px;background-color:lightblue;font-size: 1.25rem;text-align: center;line-height: 50px;position: absolute;bottom: 0px;left:0px;background:white;')
+                text.textContent = resultsAll[i].stitle;
+                let img = document.createElement('img');
+                img.setAttribute('src', resultsAll[i].file.split('.jpg')[0].
+                toLowerCase()+'.jpg');
+                img.setAttribute('style','width: 100%;display: block;')
+                document.querySelector('.itemOne').appendChild(text);
+                document.querySelector('.itemOne').appendChild(img);    
+            }
+            // itemTwo
+            if(i > 2 && i < 4) {
+                let item = document.querySelector('.itemTwo');
+                item.setAttribute('style','width: 100%; margin:10px;position: relative;')
+                let text = document.createElement('p');
+                text.setAttribute('style','width: 100%;height:50px;background-color:lightblue;font-size: 1.25rem;text-align: center;line-height: 50px;position: absolute;bottom: 0px;left:0px;background:white;')
+                text.textContent = resultsAll[i].stitle;
+                let img = document.createElement('img');
+                img.setAttribute('src', resultsAll[i].file.split('.jpg')[0].
+                toLowerCase()+'.jpg');
+                img.setAttribute('style','width: 100%;display: block;')
+                document.querySelector('.itemTwo').appendChild(text);
+                document.querySelector('.itemTwo').appendChild(img);            
+            }
+                // itemThree
+                if(i > 3 && i < 5) {
+                let item = document.querySelector('.itemThree');
+                item.setAttribute('style','width: 100%; margin:10px;position: relative;')
+                let text = document.createElement('p');
+                text.setAttribute('style','width: 100%;height:50px;background-color:lightblue;font-size: 1.25rem;text-align: center;line-height: 50px;position: absolute;bottom: 0px;left:0px;background:white;')
+                text.textContent = resultsAll[i].stitle;
+                let img = document.createElement('img');
+                img.setAttribute('src', resultsAll[i].file.split('.jpg')[0].
+                toLowerCase()+'.jpg');
+                img.setAttribute('style','width: 100%;display: block;')
+                document.querySelector('.itemThree').appendChild(text);
+                document.querySelector('.itemThree').appendChild(img);            
+            }
+                // itemFour
+                if(i > 4 && i < 6) {
+                let item = document.querySelector('.itemFour');
+                item.setAttribute('style','width: 100%; margin:10px;position: relative;')
+                let text = document.createElement('p');
+                text.setAttribute('style','width: 100%;height:50px;background-color:lightblue;font-size: 1.25rem;text-align: center;line-height: 50px;position: absolute;bottom: 0px;left:0px;background:white;')
+                text.textContent = resultsAll[i].stitle;
+                let img = document.createElement('img');
+                img.setAttribute('src', resultsAll[i].file.split('.jpg')[0].
+                toLowerCase()+'.jpg');
+                img.setAttribute('style','width: 100%;display: block;')
+                document.querySelector('.itemFour').appendChild(text);
+                document.querySelector('.itemFour').appendChild(img);            
+            }
+                // itemFive
+                if(i > 5 && i < 7) {
+                let item = document.querySelector('.itemFive');
+                item.setAttribute('style','width: 100%; margin:10px;position: relative;')
+                let text = document.createElement('p');
+                text.setAttribute('style','width: 100%;height:50px;background-color:lightblue;font-size: 1rem;text-align: center;line-height: 50px;position: absolute;bottom: 0px;left:0px;background:white;')
+                text.textContent = resultsAll[i].stitle;
+                let img = document.createElement('img');
+                img.setAttribute('src', resultsAll[i].file.split('.jpg')[0].
+                toLowerCase()+'.jpg');
+                img.setAttribute('style','width: 100%;display: block;')
+                document.querySelector('.itemFive').appendChild(text);
+                document.querySelector('.itemFive').appendChild(img);            
+            }
+                // itemSix
+                if(i > 6 && i < 8) {
+                let item = document.querySelector('.itemSix');
+                item.setAttribute('style','width: 100%; margin:10px;position: relative;')
+                let text = document.createElement('p');
+                text.setAttribute('style','width: 100%;height:50px;background-color:lightblue;font-size: 1.25rem;text-align: center;line-height: 50px;position: absolute;bottom: 0px;left:0px;background:white;')
+                text.textContent = resultsAll[i].stitle;
+                let img = document.createElement('img');
+                img.setAttribute('src', resultsAll[i].file.split('.jpg')[0].
+                toLowerCase()+'.jpg');
+                img.setAttribute('style','width: 100%;display: block;')
+                document.querySelector('.itemSix').appendChild(text);
+                document.querySelector('.itemSix').appendChild(img);            
+            }
+                // itemSeven
+                if(i > 7 && i < 9) {
+                let item = document.querySelector('.itemSeven');
+                item.setAttribute('style','width: 100%; margin:10px;position: relative;')
+                let text = document.createElement('p');
+                text.setAttribute('style','width: 100%;height:50px;background-color:lightblue;font-size: 1.25rem;text-align: center;line-height: 50px;position: absolute;bottom: 0px;left:0px;background:white;')
+                text.textContent = resultsAll[i].stitle;
+                let img = document.createElement('img');
+                img.setAttribute('src', resultsAll[i].file.split('.jpg')[0].
+                toLowerCase()+'.jpg');
+                img.setAttribute('style','width: 100%;display: block;')
+                document.querySelector('.itemSeven').appendChild(text);
+                document.querySelector('.itemSeven').appendChild(img);    
+            }
+                // itemEight
+                if(i > 8 && i < 10) {
+                let item = document.querySelector('.itemEight');
+                item.setAttribute('style','width: 100%; margin:10px;position: relative;')
+                let text = document.createElement('p');
+                text.setAttribute('style','width: 100%;height:50px;background-color:lightblue;font-size: 1.25rem;text-align: center;line-height: 50px;position: absolute;bottom: 0px;left:0px;background:white;')
+                text.textContent = resultsAll[i].stitle;
+                let img = document.createElement('img');
+                img.setAttribute('src', resultsAll[i].file.split('.jpg')[0].
+                toLowerCase()+'.jpg');
+                img.setAttribute('style','width: 100%;display: block;')
+                document.querySelector('.itemEight').appendChild(text);
+                document.querySelector('.itemEight').appendChild(img);    
+            }
+
+            // let el = document.querySelector('.btn');
+            // el.addEventListener('click',function(el){
+            //   if(i > 10 && i < 19) {}},false)
+
+        }
+        console.log(stitleAll);
+        console.log(fileAll);
+      })
+    </script>
+  </body>
+</html>
